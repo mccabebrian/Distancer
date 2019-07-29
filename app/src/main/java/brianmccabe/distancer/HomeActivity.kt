@@ -16,6 +16,6 @@ class HomeActivity : AppCompatActivity() {
         activityMainBinding.lifecycleOwner = this
         activityMainBinding.viewModel = viewModel
 
-        viewModel.getUsers(this)
+        viewModel.getUsersWithin100km(this)
     }
 }

@@ -1,19 +1,17 @@
 package brianmccabe.distancer
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import brianmccabe.distancer.data.FileHelper
-import org.json.JSONArray
-
+import brianmccabe.distancer.data.model.User
+import brianmccabe.distancer.list.ListUtil
+import com.google.gson.Gson
 class HomeActivityViewModel : ViewModel() {
 
-    init {
-        Log.e("initViewmodel", "hello")
-    }
-
-    fun getUsers(context: Context) {
+    fun getUsersWithin100km(context: Context) {
         val users = FileHelper().loadJSONFromAsset(context)
-        val jsonArray = JSONArray(users)
+        val userList = Gson().fromJson(users, Array<User>::class.java).toList()
+        val sortedList = ListUtil().generateAndSortUserList(userList)
+        FileHelper().writeUsersToOutputFile(Gson().toJson(sortedList), context)
     }
 }

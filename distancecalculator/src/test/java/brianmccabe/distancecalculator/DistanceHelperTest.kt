@@ -8,13 +8,7 @@ class DistanceHelperTest {
 
     @Test
     fun calculateDistance() {
-        val distanceInKm = DistanceHelper().calculateDistance(53.4106, -6.4426)
+        val distanceInKm = DistanceHelper().calculateDistance(52.966, -6.463)
         assertTrue(15 == distanceInKm)
-    }
-
-    @Test
-    fun parse() {
-        val strni = DistanceHelper().parse()
-        assertTrue("f".equals(strni))
     }
 }
